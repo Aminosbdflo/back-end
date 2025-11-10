@@ -137,6 +137,19 @@
                                                         </form>
                                                     @endif
 
+                                                    {{-- Return button --}}
+                                                    @if($book->status === 'borrowed')
+                                                        <form action="{{ route('user.books.return', $book->id) }}" method="POST" class="inline">
+                                                            @csrf
+                                                            <button type="submit" class="flex items-center px-3 py-2 rounded-md bg-green-50 hover:bg-green-100 text-green-700 text-sm" title="Return Book">
+                                                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                                </svg>
+                                                                Return
+                                                            </button>
+                                                        </form>
+                                                    @endif
+
                                                     {{-- Edit button: store the book JSON into data-book to avoid escaping problems in onclick --}}
                                                     <button
                                                         type="button"
@@ -257,6 +270,7 @@
                                     <option value="">Select Status</option>
                                     <option value="available">Available</option>
                                     <option value="borrowed">Borrowed</option>
+                                    <option value="vente">For Sale</option>
                                 </select>
                             </div>
 
@@ -361,6 +375,7 @@
                                     <option value="">Select Status</option>
                                     <option value="available">Available</option>
                                     <option value="borrowed">Borrowed</option>
+                                    <option value="vente">For Sale</option>
                                 </select>
                             </div>
 

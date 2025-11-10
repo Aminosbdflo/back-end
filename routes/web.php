@@ -44,6 +44,7 @@ Route::middleware(['auth', 'userMiddleware'])->group(function () {
     Route::put('books/{id}',[BooksController::class ,'update'])->name('user.books.update');
     Route::delete('books/{id}',[BooksController::class ,'destroy'])->name('user.books.destroy');
     Route::post('books/{id}/request',[BooksController::class ,'requestBook'])->name('user.books.request');
+    Route::post('books/{id}/return',[BooksController::class ,'returnBook'])->name('user.books.return');
 
 
 });

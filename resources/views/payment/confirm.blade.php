@@ -127,7 +127,7 @@
         }
 
         .payment-summary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #000;
             color: white;
         }
 
@@ -152,8 +152,6 @@
 <body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen flex flex-col">
     <div id="smooth-wrapper">
         <div id="smooth-content">
-
-    <!-- Enhanced Header -->
     <header class="bg-white shadow-md border-b border-blue-200 sticky top-0 z-50 glass-effect">
         <div class="w-full lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @if (Route::has('login'))

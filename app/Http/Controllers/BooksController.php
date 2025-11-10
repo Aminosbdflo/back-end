@@ -139,4 +139,33 @@ class BooksController extends Controller
         }
         return redirect()->back()->with('success', 'Book request submitted successfully!');
     }
+
+    public function returnBook(Request $request, $id){
+        $book = Books::findOrFail($id);
+
+        // Check if the book is borrowed by the current user
+        $activeTransaction = Transaction::where('user_id', Auth::id())
+                                        ->where('book_id', $id)
+                                        ->where('status', 'approved')
+                                        ->where('type', 'borrow')
+                                        ->first();
+
+        if (!$activeTransaction) {
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'You do not have an active borrowing transaction for this book.'], 400);
+            }
+            return redirect()->back()->with('error', 'You do not have an active borrowing transaction for this book.');
+        }
+
+        // Update book status to available
+        $book->update(['status' => 'available']);
+
+        // Update transaction status to completed
+        $activeTransaction->update(['status' => 'completed']);
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Book returned successfully!']);
+        }
+        return redirect()->back()->with('success', 'Book returned successfully!');
+    }
 }

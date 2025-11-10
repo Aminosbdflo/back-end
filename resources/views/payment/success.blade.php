@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .success-container {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background-color: #ffffffff;
             min-height: 100vh;
             display: flex;
             align-items: center;
