@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
             $table->enum('type', ['borrow']);
             $table->enum('status', ['pending', 'completed', 'rejected'])->default('pending');
-            $table->decimal('amount', 8, 2)->nullable(); // للدفع إذا كان purchase
-            $table->foreignId('approved_by')->nullable()->constrained('users')->onDelete('set null'); // Admin اللي قبل
+            $table->decimal('amount', 8, 2)->nullable(); 
+            $table->foreignId('approved_by')->nullable()->constrained('users')->onDelete('set null'); 
             $table->text('notes')->nullable();
             $table->timestamps();
         });
